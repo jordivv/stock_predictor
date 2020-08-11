@@ -11,10 +11,10 @@ def Key_Stats(gather="Total Debt/Equity (mrq)"):
     stock_list = [x[0] for x in os.walk(statspath)]
     df = pd.DataFrame(columns = ['Date','Unix','Ticker','DE Ratio'])
     
-    sp500_df = pd.DataFrame.from_csv("YAHOO-INDEX_GSPC.csv")
-
+    # sp500_df = pd.read_csv(r"C:\Users\vveen\Documents\personal_projects\stocks\YAHOO-INDEX_GSPC.csv")
+    sp500_df = pd.read_csv(r'C:\Users\vveen\Documents\personal_projects\stocks\YAHOO-INDEX_GSPC.csv')
     # print(stock_list)
-    for each_dir in stock_list[1:5]:
+    for each_dir in stock_list[1:]:
         each_file = os.listdir(each_dir)
         ticker = each_dir.split("\\")[1]
         if len(each_file) > 0:
@@ -31,7 +31,7 @@ def Key_Stats(gather="Total Debt/Equity (mrq)"):
                         row = sp500_df[sp500_df["Date"] == sp500_date]
                         sp500_value = float(row["Adj Close"])
                     except:
-                        sp500_date = datetime.fromtimestamp(unix_time-259200).strftime('%Y-%m-%d'))
+                        sp500_date = datetime.fromtimestamp(unix_time-259200).strftime('%Y-%m-%d')
                         row = sp500_df[sp500_df["Date"] == sp500_date]
                         sp500_value = float(row["Adj Close"])
 
@@ -48,3 +48,5 @@ def Key_Stats(gather="Total Debt/Equity (mrq)"):
     df.to_csv(save)
 
 Key_Stats()
+
+
