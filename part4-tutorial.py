@@ -5,6 +5,7 @@ from datetime import datetime
 
 path = r"C:\Users\vveen\OneDrive\Documents\projects_personal\stocks\data\intraQuarter"
 
+
 def Key_Stats(gather="Total Debt/Equity (mrq)"):
     statspath = path+'/_KeyStats'
     stock_list = [x[0] for x in os.walk(statspath)]
